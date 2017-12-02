@@ -1,0 +1,7 @@
+"use strict";
+
+ angular.module('constantes', [])
+
+.constant('ENV', {name:'development',APIEndPoint:'http://192.168.56.3/api.buenchico.xyz/public'})
+
+;
