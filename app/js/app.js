@@ -3,7 +3,7 @@ var app = angular.module('buenchico', [
   'ngRoute',
   'LoginController','ProductosController',
   'UsuarioDAO',
-  'MenuController'
+  'menuDirective'
 ]);
 app.config(['$routeProvider','$locationProvider',
   function($routeProvider,$locationProvider) {
