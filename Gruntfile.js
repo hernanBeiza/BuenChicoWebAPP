@@ -77,6 +77,20 @@ module.exports = function(grunt){
 			},
 		},
 
+		compress: {
+			main: {
+			    options: {
+			      mode: 'zip',
+			      archive: './dist/app.zip'
+			    },
+			    files: [{
+			      expand: true,
+			      src: ['./dist/app/**'],
+			      //dest: './dist/'
+			    }]
+			}
+		},
+		
 		watch:{
 			files:['./app/','./app/*.*'],
 			//files:['./dist/app/','./dist/app/*.*'],
@@ -103,7 +117,8 @@ module.exports = function(grunt){
 	});
  
 	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-copy')
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-ng-constant');
 	grunt.loadNpmTasks('grunt-processhtml');
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -116,8 +131,9 @@ module.exports = function(grunt){
 		'clean',
 		'copy',
 		'processhtml:production',
-		'open',
-		'watch'
+		'compress',
+		//'open',
+		//'watch'
 	]);
 	
 	grunt.registerTask('dev',[
