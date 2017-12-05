@@ -1,5 +1,5 @@
 angular.module("menuDirective",[])
-.directive('menuDirective', function($rootScope,$location,UsuarioDAO,){
+.directive('menuDirective', function($rootScope,$location,LocalDBDAO,UsuarioDAO,){
     return {
       restrict: 'E',
       templateUrl: 'js/directives/MenuDirective/menu.html',
@@ -9,27 +9,26 @@ angular.module("menuDirective",[])
         // Gracias Andres!
         //$(".button-collapse").sideNav();
         //Esto de acá abajo es lo mismo que lo de arriba, pero la forma Angular, no Jquery =)
-        angular.element(".button-collapse").sideNav();
+        angular.element(".button-collapse").sideNav({closeOnClick: true});
 
+        scope.model.usuario = LocalDBDAO.obtenerUsuario();
+        console.log(scope.model);
         //Funciones menú
         scope.logout = function(){
           console.log("MenuDirective logout");
-          console.log($rootScope.model);
           UsuarioDAO.logout().then(function(data){
             console.warn(data);
             if(data.result){
-              $rootScope.model.logueado = false;
-              console.log($rootScope.model);
+              LocalDBDAO.borrarTodo();
               $location.path('/login');
             } else {
               alert(data.errores);
             }
           },function(errorData){
             console.error(errorData);
-            $rootScope.model.logueado = false;
+            LocalDBDAO.borrarTodo();
             $location.path('/login');
           })
-
         }
 
       }

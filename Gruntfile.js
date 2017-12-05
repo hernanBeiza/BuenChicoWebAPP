@@ -24,7 +24,7 @@ module.exports = function(grunt){
 			// Environment targets
 			development: {
 				options: {
-					dest: './app/js/config.js',
+					dest: './app/js/constantes.js',
 				},
 				constants: {
 			        //package: grunt.file.readJSON('config.json')
@@ -36,7 +36,7 @@ module.exports = function(grunt){
 			},
 			production: {
 				options: {
-					dest: './app/js/config.js'
+					dest: './app/js/constantes.js'
 				},
 				constants: {
 			        //package: grunt.file.readJSON('config.json')

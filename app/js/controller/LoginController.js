@@ -1,16 +1,17 @@
 angular.module('LoginController', [])
 
-.controller('LoginController', ['$rootScope','$scope', '$routeParams','$location','UsuarioDAO',
+.controller('LoginController', ['$rootScope','$scope','$location','LocalDBDAO','UsuarioDAO','$mdDialog',
   
-	function($rootScope,$scope,$routeParams,$location,$UsuarioDAO){
+	function($rootScope,$scope,$location,LocalDBDAO,UsuarioDAO,$mdDialog){
       
 		$scope.init = function(){
 			console.log("LoginController: init();");
 			$scope.model.usuario = {};
+			$scope.model.enviando = false;
 		}
 
-		$scope.loginEnviar = function(){
-			console.log("LoginController: loginEnviar();");
+		$scope.loginEnviar = function(valid){
+			console.log("LoginController: loginEnviar();",valid);
 			console.log($scope.model);
 
 			var enviar = true;
@@ -27,27 +28,41 @@ angular.module('LoginController', [])
 
 			if(enviar){
 				console.log("entrar");
-				$UsuarioDAO.login($scope.model.usuario).then(function(data){
+				$scope.model.enviando = true;
+
+				UsuarioDAO.login($scope.model.usuario).then(function(data){
 					console.warn(data);
+					$scope.model.enviando = false;
+
 					if(data.result){
-						$rootScope.model.usuario = $scope.model.usuario;
+						LocalDBDAO.guardarUsuario(data.usuario);
+						$rootScope.model.usuario = data.usuario;
 						$rootScope.model.logueado = true;
 						$location.path('/productos');
 					} else {
-						alert(data.errores);
 						$rootScope.model.logueado = false;
-				        //$ngBootbox.alert(data.errores).then(function() { });			    			  								
+						$scope.mostrarAlerta(data.errores);
+
 					}
 				},function(errorData){
 					console.error(errorData);
+					$scope.model.enviando = false;
 					$rootScope.model.logueado = false;
-					alert(errorData.errores);
-			        //$ngBootbox.alert(errorData.errores).then(function() { });			    			  								
+					$scope.mostrarAlerta(errorData.errores);
 				})
 			} else {
-				alert(errores);
-		        //$ngBootbox.alert(errores).then(function() { });			    			  		
+				$scope.mostrarAlerta(errores);
 			}
+
+		}
+
+		$scope.mostrarAlerta = function(mensaje){
+			$mdDialog.show(
+				$mdDialog.alert()
+				.title("Atención")
+				.textContent(mensaje)
+		        .ok('Aceptar')
+				.clickOutsideToClose(true));
 
 		}
 

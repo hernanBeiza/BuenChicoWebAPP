@@ -1,6 +1,7 @@
 <!DOCTYPE html>
   <html ng-app="buenchico">
     <head>
+      <meta charset="utf8">
       <title>BuenChico</title>
       <!-- Favicons-->
       <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
@@ -35,7 +36,8 @@
       <div ng-view></div>
 
       <!--Import jQuery before materialize.js-->
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+      <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
       <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
 
       <!--prism-->
@@ -50,13 +52,25 @@
       <!-- Angular -->
       <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
       <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+      <!-- librerias para angular -->
+      <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+
+      <link href="bower_components/angular-material/angular-material.min.css" type="text/css" rel="stylesheet">
+
       <!-- App Scripts -->
       <script type="text/javascript" src="js/directives/MenuDirective/MenuDirective.js"></script>
       <script type="text/javascript" src="js/dao/UsuarioDAO.js"></script>
+      <script type="text/javascript" src="js/dao/ProductoDAO.js"></script>
+      <script type="text/javascript" src="js/dao/LocalDBDAO.js"></script>
       <script type="text/javascript" src="js/model/UsuarioModel.js"></script>
+      <script type="text/javascript" src="js/model/ProductoModel.js"></script>
       <script type="text/javascript" src="js/controller/LoginController.js"></script>
       <script type="text/javascript" src="js/controller/ProductosController.js"></script>
-      <script type="text/javascript" src="js/config.js"></script>
+      <script type="text/javascript" src="js/controller/ProductoAgregarController.js"></script>
+      <script type="text/javascript" src="js/controller/ProductoEditarController.js"></script>
+      <script type="text/javascript" src="js/constantes.js"></script>
       <script type="text/javascript" src="js/app.js"></script>
     </body>
 

@@ -32,8 +32,9 @@ angular.module("UsuarioDAO",['UsuarioModel'])
             }).then(function enviarComplete(json) {
                 console.info("UsuarioDAO.js: enviarComplete");
                 console.info(json);
-                if(json.data.result){                    
-                    deferred.resolve({result:true,mensajes:json.data.mensajes});
+                if(json.data.result){
+                    var usuario = json.data.usuario;
+                    deferred.resolve({result:true,mensajes:json.data.mensajes,usuario:usuario});
                 } else {
                     deferred.reject({result:false,errores:json.data.errores});
                 }
@@ -41,11 +42,6 @@ angular.module("UsuarioDAO",['UsuarioModel'])
                 console.error("usuarioDAO.js: enviarError");
                 console.error(data);
                 //console.log(data,data.statusText);
-                /*
-                console.info(status);
-                console.info(headers);
-                console.info(config);
-                */
                 deferred.reject({result:false,errores:"Hubo un error de conexión. Intenta más tarde"});
             });
             return deferred.promise;
@@ -91,11 +87,6 @@ angular.module("UsuarioDAO",['UsuarioModel'])
                 console.error("UsuarioDAO.js: enviarError");
                 console.error(data);
                 //console.log(data,data.statusText);
-                /*
-                console.info(status);
-                console.info(headers);
-                console.info(config);
-                */
                 deferred.reject({result:false,errores:"Hubo un error de conexión. Intenta más tarde"});
             });
             return deferred.promise;
@@ -141,11 +132,6 @@ angular.module("UsuarioDAO",['UsuarioModel'])
                 console.error("UsuarioDAO.js: enviarError");
                 console.error(data);
                 //console.log(data,data.statusText);
-                /*
-                console.info(status);
-                console.info(headers);
-                console.info(config);
-                */
                 deferred.reject({result:false,errores:"Hubo un error de conexión. Intenta más tarde"});
             });
             return deferred.promise;            

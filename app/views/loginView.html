@@ -3,17 +3,26 @@
 	<div class="row">
 
 		<div class="col s12 card-panel">
-	        	<h2 class="center-align">	            	
+				<h2 class="center-align">
 	            	<img src="images/logo2.jpg" alt="" class="circle responsive-img valign profile-image-login">
 				</h2>
+	        	<h3 class="center-align">
+	            	Sistema de Administración 
+				</h3>
 	            <div class="row">
-	                <form class="col m12">
+	                <form class="col m12" 
+	                name="loginForm" 
+	                ng-submit="loginEnviar(loginForm.$valid)">
 	                        <div class="input-field col s12">
-	                            <input id="user" ng-model="model.usuario.user" type="text" class="validate">
+	                            <input id="user" type="text" class="validate" 
+	                            ng-model="model.usuario.user"
+	                            required>
 	                            <label for="user">Usuario</label>
 	                        </div>
 	                        <div class="input-field col s12">
-	                            <input id="pass" ng-model="model.usuario.pass" type="password" class="validate">
+	                            <input id="pass" type="password" class="validate" 
+	                            ng-model="model.usuario.pass" 
+	                            required>
 	                            <label for="pass">Contraseña</label>
 	                        </div>
 	                        <!--
@@ -27,8 +36,10 @@
 	                    <div class="divider"></div>
 	                        <div class="col m12">
 	                            <p class="right-align">
-	                                <button class="btn btn-large waves-effect waves-light" type="button" 
-	                                ng-click="loginEnviar()" name="action">Inicio</button>
+	                                <button class="btn btn-large waves-effect waves-light" 
+	                                type="submit" 
+									ng-disabled="loginForm.$invalid || model.enviando"
+	                                name="action">Inicio</button>
 	                            </p>
 	                        </div>
 	                </form>

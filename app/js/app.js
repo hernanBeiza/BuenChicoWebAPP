@@ -1,8 +1,9 @@
 var app = angular.module('buenchico', [
   'constantes',
-  'ngRoute',
-  'LoginController','ProductosController',
-  'UsuarioDAO',
+  'ngRoute','ngMaterial',
+  'LoginController','ProductosController','ProductoAgregarController','ProductoEditarController',
+  'LocalDBDAO','UsuarioDAO','ProductoDAO',
+  'UsuarioModel','ProductoModel',
   'menuDirective'
 ]);
 app.config(['$routeProvider','$locationProvider',
@@ -15,8 +16,12 @@ app.config(['$routeProvider','$locationProvider',
         //controller: 'indexController'
       })
       .when('/producto/agregar', {
-        templateUrl: 'views/productosAgregarView.html',
-        //controller: 'indexController'
+        templateUrl: 'views/productoAgregarView.html',
+        //controller: 'productosAgregarController'
+      })
+      .when('/producto/editar/:idproducto', {
+        templateUrl: 'views/productoEditarView.html',
+        //controller: 'ProductosEditarController'
       })
       .when('/index', {
         templateUrl: 'views/loginView.html',

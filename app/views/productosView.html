@@ -19,34 +19,43 @@
 		                  </tr>
 		                </thead>
 		                <tbody>
-		                  <tr>
-		                      <td>cepillo</td>
-		                      <td>00001</td>
-		                      <td>Pelo fino</td>
-		                      <th><i class="material-icons prefix">edit</i></th>
-		                      <th><i class="material-icons prefix">delete</i></th>
-		                  </tr>
-		                  <tr>
-		                      <td>Cepillo</td>
-		                      <td>00002</td>
-		                      <td>Pelo Grueso</td>
-		                      <th><i class="material-icons prefix">edit</i></th>
-		                      <th><i class="material-icons prefix">delete</i></th>
-		                  </tr>
-		                  <tr>
-		                      <td>Ropa</td>
-		                      <td>00003</td>
-		                      <td>Blanca</td>
-		                      <th><i class="material-icons prefix">edit</i></th>
-		                      <th><i class="material-icons prefix">delete</i></th>
-		                  </tr>
-		                  <tr>
-		                      <td>Juguete</td>
-		                      <td>00004</td>
-		                      <td>Color</td>
-		                      <th><i class="material-icons prefix">edit</i></th>
-		                      <th><i class="material-icons prefix">delete</i></th>
-		                  </tr>
+							<tr ng-repeat="producto in model.productos">
+								<td>{{producto.nombre}}</td>
+								<td>{{producto.codigo}}</td>
+								<td>{{producto.descripcion}}</td>
+								<th><i class="material-icons prefix" ng-click="irEditar(producto)">edit</i></th>
+								<th><i class="material-icons prefix" ng-click="eliminar(producto)">delete</i></th>
+							</tr>
+							<!--
+							<tr>
+								<td>cepillo</td>
+								<td>00001</td>
+								<td>Pelo fino</td>
+								<th><i class="material-icons prefix">edit</i></th>
+								<th><i class="material-icons prefix">delete</i></th>
+							</tr>
+							<tr>
+							<td>Cepillo</td>
+								<td>00002</td>
+								<td>Pelo Grueso</td>
+								<th><i class="material-icons prefix">edit</i></th>
+								<th><i class="material-icons prefix">delete</i></th>
+							</tr>
+							<tr>
+								<td>Ropa</td>
+								<td>00003</td>
+								<td>Blanca</td>
+								<th><i class="material-icons prefix">edit</i></th>
+								<th><i class="material-icons prefix">delete</i></th>
+							</tr>
+							<tr>
+								<td>Juguete</td>
+								<td>00004</td>
+								<td>Color</td>
+								<th><i class="material-icons prefix">edit</i></th>
+								<th><i class="material-icons prefix">delete</i></th>
+							</tr>
+							-->
 		                  </tbody>
 		                </table>
 		              </div>
