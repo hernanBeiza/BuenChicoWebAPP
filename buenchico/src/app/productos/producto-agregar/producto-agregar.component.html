@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+				<h2 class="header">Agregar un Producto</h2>  
+          <form name="agregaForm" 
+            [formGroup]="agregarForm" 
+            (ngSubmit)="onSubmit(agregarForm.value)">
+						<div class="input-field col s6">
+							<i class="material-icons prefix">account_circle</i>
+							<input name="nombre" type="text" class="validate" 
+							[formControl]="nombre" 
+							[(ngModel)]="productoModel.nombre"
+							required>
+							<div class="alert alert-danger" 
+							*ngIf="formErrors.nombre" 
+							[innerHTML]="formErrors.nombre"></div>
+							<label for="nombre">Nombre del Producto</label>
+						</div>
+
+
+					<div class="input-field col s6">
+						<i class="material-icons prefix">fingerprint</i>
+						<input id="codigo" type="text" class="validate" 
+						[formControl]="codigo" 
+						[(ngModel)]="productoModel.codigo"
+						required>
+						<div class="alert alert-danger" 
+						*ngIf="formErrors.codigo" 
+						[innerHTML]="formErrors.codigo"></div>
+						<label for="codigo">Codigo</label>
+					</div>
+
+					<div class="input-field col s12">
+						<i class="material-icons prefix">description</i>
+						<textarea id="descripcion" class="validate materialize-textarea"
+						[formControl]="descripcion" 
+						[(ngModel)]="productoModel.descripcion"
+						required></textarea>
+						<div class="alert alert-danger" 
+						*ngIf="formErrors.descripcion" 
+						[innerHTML]="formErrors.descripcion"></div>
+						<label for="descripcion">Descripción</label>
+					</div>
+					<button class="waves-effect waves-light btn-large" 
+					type="submit"
+					[disabled]="!agregarForm.valid || enviandoFlag">Publicar producto</button>
+				</form>
+		</div>
+	</div>
+</div>

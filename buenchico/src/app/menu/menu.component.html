@@ -1,0 +1,38 @@
+<div [hidden]="!mostrarme">
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Buen Chico</a>
+      <a href="#" id="menu" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#/producto/listar">Lista de productos</a></li>
+        <li><a href="#/producto/agregar">Agregar un producto</a></li>
+        <li><a ng-click="logout()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Fin Navbar -->
+  <!-- Barra laterla en móvil -->
+  <mz-sidenav #sidenav
+    [id]="'sidenav-demo'"
+    [closeOnClick]="true"
+    [collapseButtonId]="'menu'">
+    <mz-sidenav-header>Acciones de la tienda</mz-sidenav-header>
+    <mz-sidenav-subheader></mz-sidenav-subheader>
+    <mz-sidenav-link>
+      <a [routerLink]="['/producto/listar']">Lista de Productos</a>
+    </mz-sidenav-link>
+    <mz-sidenav-link>
+      <a [routerLink]="['/producto/agregar']">Agregar un producto</a>
+    </mz-sidenav-link>
+    <!--
+    <mz-sidenav-link [active]="true">
+      <a>Agregar un producto</a>
+    </mz-sidenav-link>
+    -->
+    <mz-sidenav-divider></mz-sidenav-divider>
+    <mz-sidenav-link>
+      <a (click)="cerrarSesion()">Cerrar sesión</a>
+    </mz-sidenav-link>
+  </mz-sidenav>
+</div>

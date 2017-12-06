@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+  	<nav class="nav-extended"></nav>
+    <div class="col s12">
+      <div id="striped" class="section scrollspy">
+        <h2 class="header">Lista de productos</h2>
+        <div class="row">
+          <div class="col s12">
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Código</th>
+                  <th>Descripción</th>
+                  <th>Editar</th>
+                  <th>Borrar</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+								<tr *ngFor="let producto of productos;">
+									<td>{{producto.nombre}}</td>
+									<td>{{producto.codigo}}</td>
+									<td>{{producto.descripcion}}</td>
+									<th><i class="mouse material-icons prefix" (click)="irEditar(producto)">edit</i></th>
+                  <th><i class="mouse material-icons prefix" (click)="eliminar(producto)">delete</i></th>
+                  <td>{{producto.valid}}</td>
+								</tr>
+            	</tbody>
+            </table>
+          </div>
+        </div>
+    	</div>
+    </div>
+	</div>
+</div>
