@@ -15,5 +15,5 @@ Instalar las depednencias de desarrollo con npm
 	
 Esto creará una carpeta dist, y levantará el navegador sirviendo desde esa carpeta
 
-##Para subir a un servidor web
+## Para subir a un servidor web
 Hay que cargar la carpeta dist a la raíz de nuestro servidor
